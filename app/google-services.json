@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873758846802",
+    "project_id": "codestorm-238dd",
+    "storage_bucket": "codestorm-238dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873758846802:android:48880a0a7f6556618a148b",
+        "android_client_info": {
+          "package_name": "org.meicode.recycler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhEZ5Jtn8PobDyIzwboMtewolaBS8i30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
