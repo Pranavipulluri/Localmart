@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <!-- Wrap your LinearLayout inside a ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFEFCB"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- App Logo and Profile Icon in the same row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- App Logo on the left -->
+                <ImageView
+                    android:id="@+id/app_logo"
+                    android:layout_width="48dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="App Logo"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1" />
+
+                <!-- Profile Icon on the right -->
+                <ImageView
+                    android:id="@+id/profile_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="Profile Icon"
+                    android:padding="2dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_person" />
+            </LinearLayout>
+
+            <!-- Search Bar -->
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_search_box"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search for products" />
+
+            <!-- Image View for product -->
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+            <!-- Product Name -->
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Product Name"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Product Price -->
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/rounded_box"
+                android:text="Todays special"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <!-- Horizontal RecyclerView inside the CardView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                android:background="@color/white"
+                tools:listitem="@layout/item_layout" />
+
+            <TextView
+                android:id="@+id/productprice"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/rounded_box"
+                android:text="Top picks"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/item_layout" />
+
+            <!-- Bottom Navigation Bar -->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:menu="@menu/bottom_navigation_menu" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>
