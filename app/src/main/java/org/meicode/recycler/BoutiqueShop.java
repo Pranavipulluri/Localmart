@@ -5,9 +5,9 @@ import java.util.List;
 public class BoutiqueShop {
     private String shopName;
     private String phoneNumber;
-    private List<Product> products;
+    private List<Products> products;
 
-    public BoutiqueShop(String shopName, String phoneNumber, List<Product> products) {
+    public BoutiqueShop(String shopName, String phoneNumber, List<Products> products) {
         this.shopName = shopName;
         this.phoneNumber = phoneNumber;
         this.products = products;
@@ -30,11 +30,11 @@ public class BoutiqueShop {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Product> getProducts() {
+    public List<Products> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<Products> products) {
         this.products = products;
     }
 }

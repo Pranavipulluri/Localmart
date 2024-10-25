@@ -6,18 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
+public class ProductAdapters extends RecyclerView.Adapter<ProductAdapters.ProductViewHolder> {
     private Context context;
-    private List<Products> productList;
+    private List<Product> productList;
 
-    public ProductAdapter(Context context, List<Products> productList) {
+    public ProductAdapters(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
     }
@@ -25,21 +23,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false); // Ensure this layout file exists
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Products product = productList.get(position);
-
-        // Set data to the views
-        holder.productName.setText(product.getProductName());
+        Product product = productList.get(position);
+        holder.productName.setText(product.getName());
         holder.productDescription.setText(product.getDescription());
-        holder.productPrice.setText(String.format("$%.2f", product.getPrice())); // Format price
-
-        // Assuming imageUrl is a URL string, you'll need an image loading library like Glide or Picasso to load it.
-        // Glide.with(context).load(product.getImageUrl()).into(holder.productImage);
+        holder.productPrice.setText(String.valueOf(product.getPrice()));
+        holder.productImage.setImageResource(product.getImageResourceId()); // Ensure this is correct
     }
 
     @Override
@@ -53,10 +47,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.item_name);
-            productDescription = itemView.findViewById(R.id.item_description);
-            productPrice = itemView.findViewById(R.id.item_price);
-            productImage = itemView.findViewById(R.id.item_image);
+            productName = itemView.findViewById(R.id.item_name); // Ensure this ID exists in your item layout
+            productDescription = itemView.findViewById(R.id.item_description); // Ensure this ID exists in your item layout
+            productPrice = itemView.findViewById(R.id.item_price); // Ensure this ID exists in your item layout
+            productImage = itemView.findViewById(R.id.item_image); // Ensure this ID exists in your item layout
         }
     }
 }

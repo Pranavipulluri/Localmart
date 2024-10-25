@@ -1,12 +1,8 @@
 package org.meicode.recycler;
 
-import static org.meicode.recycler.R.id.nav_home;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,28 +20,26 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private List<BoutiqueShop> boutiqueShops;
-    private List<Product> productList;
+    private List<Products> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Set Home as default selected item
-        bottomNavigationView.setSelectedItemId(nav_home);
-
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);  // Default selected item
 
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // Fetch product data from your data source
-        boutiqueShops = DataProvider.getBoutiqueShops(); // Ensure DataProvider is defined and returning data
+        // Fetch product data from DataProvider (assuming DataProvider is correctly set up)
+        boutiqueShops = DataProvider.getBoutiqueShops();  // Ensure DataProvider is defined and returns data
         productList = new ArrayList<>();
 
         for (BoutiqueShop shop : boutiqueShops) {
-            productList.addAll(shop.getProducts());
+            productList.addAll(shop.getProducts());  // Ensure getProducts() returns List<Products>
         }
 
         // Setup the RecyclerView Adapter
@@ -63,37 +57,34 @@ public class MainActivity extends AppCompatActivity {
             String token = task.getResult();
             Log.d(TAG, "FCM Token: " + token);
 
-            // You can send the token to your server for further use
+            // Send token to your server
             sendRegistrationToServer(token);
         });
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.nav_home) {
-                    // Handle home action
-                    return true;
-                } else if (id == R.id.nav_chat) {
-                    // Navigate to ChatActivity
-                    Intent chatIntent = new Intent(MainActivity.this, ChatActivity.class);
-                    startActivity(chatIntent);
-                    return true;
-                } else if (id == R.id.nav_search) {
-                    // Navigate to ProfileActivity
-                    Intent profileIntent = new Intent(MainActivity.this, SearchActivity.class);
-                    startActivity(profileIntent);
-                    return true;
-                }
-                return false;
+
+        // Bottom Navigation item selection handling
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                // Handle home action
+                return true;
+            } else if (id == R.id.nav_chat) {
+                // Navigate to ChatActivity
+                Intent chatIntent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivity(chatIntent);
+                return true;
+            } else if (id == R.id.nav_search) {
+                // Navigate to SearchActivity
+                Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(searchIntent);
+                return true;
             }
+            return false;
         });
-
-
     }
 
     // Method to send FCM token to your app's server
     private void sendRegistrationToServer(String token) {
-        // Implement your server communication logic here
+        // Implement server communication logic here
         Log.d(TAG, "Sending token to server: " + token);
     }
 }

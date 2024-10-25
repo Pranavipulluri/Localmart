@@ -1,10 +1,14 @@
 package org.meicode.recycler; // Replace with your package name
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +39,16 @@ public class SellersActivity extends AppCompatActivity {
         // Set up the adapter
         productRequestAdapter = new ProductRequestAdapter(productRequests);
         recyclerView.setAdapter(productRequestAdapter);
+        View profileButton = findViewById(R.id.profileButton);
+
+        // Set click listener on profileButton
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start SellerPageActivity
+                Intent intent = new Intent(SellersActivity.this, SellerPageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
