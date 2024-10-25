@@ -1,18 +1,18 @@
 pluginManagement {
     repositories {
-        google()
-        mavenCentral()
         gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
         google()
         mavenCentral()
     }
 }
 
-rootProject.name = "recycler"
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS) // Ensure settings handles repositories
+    repositories {
+        google() // Google's repository for Android dependencies
+        mavenCentral() // Maven Central for other libraries
+    }
+}
+
+rootProject.name = "YourProjectName" // Replace with your project name
 include(":app")
- 
