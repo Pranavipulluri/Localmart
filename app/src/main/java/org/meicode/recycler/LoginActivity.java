@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
-    private Button loginButton, signUpButton;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         // Initialize UI elements
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-        loginButton = findViewById(R.id.loginButton);
-        signUpButton = findViewById(R.id.signUpButton);
+        Button loginButton = findViewById(R.id.loginButton);
+        Button signUpButton = findViewById(R.id.signUpButton);
 
         // Handle sign-up button click
         signUpButton.setOnClickListener(new View.OnClickListener() {

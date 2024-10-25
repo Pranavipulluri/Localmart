@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFEFCB"
+    tools:ignore="ExtraText">
+
+    <!-- Camera Icon -->
+    <!-- Use a camera icon here -->
+
+
+    <!-- Description Box -->
+    <ImageView
+        android:id="@+id/camera_icon"
+        android:layout_width="100dp"
+        android:layout_height="109dp"
+        android:clickable="true"
+        android:contentDescription="Camera Icon"
+        android:padding="2dp"
+        android:src="@drawable/ic_camera" />
+
+    <EditText
+        android:id="@+id/description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter description about your project"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:gravity="top|start"
+        android:padding="16dp"
+        android:background="@drawable/rounded_search_box" />
+
+    <!-- Search Button -->
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Object"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#009688"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        app:menu="@menu/bottom_navigation_menu" />
+
+
+</LinearLayout>
