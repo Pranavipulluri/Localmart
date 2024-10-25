@@ -29,6 +29,9 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".ChatActivity" />
+        <activity android:name=".SellcustomActivity"/>
+        <activity android:name=".SellersActivity"/>
+
         <!-- Ensure MainActivity is declared -->
         <service
             android:name=".MyFirebaseMessagingService"

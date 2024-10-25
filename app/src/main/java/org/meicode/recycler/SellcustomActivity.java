@@ -12,7 +12,7 @@ public class SellcustomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sellcustom);
 
         // Button for Sellers
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button sellersButton = findViewById(R.id.button);
