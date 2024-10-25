@@ -12,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/sample_product" /> <!-- Replace with actual image source -->
+        android:src="@drawable/sample_image" /> <!-- Replace with actual image source -->
 
     <!-- Vertical Layout for Product Details on the Right -->
     <LinearLayout
@@ -50,6 +50,6 @@
             android:text="Message Customer"
             android:layout_marginTop="8dp"
             android:textColor="@android:color/white"
-            android:backgroundTint="@color/teal_700" />
+            android:backgroundTint="#009688" />
     </LinearLayout>
 </LinearLayout>

@@ -68,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign-up successful
                             Toast.makeText(LoginActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                            // Navigate to MainActivity after successful sign-up
-                            navigateToMainActivity();
+                            // Navigate to SellcustomActivity after successful sign-up
+                            navigateToSellcustomActivity();
                         } else {
                             // Sign-up failed
                             Toast.makeText(LoginActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -95,10 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign-in successful
                             Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-                            // Create an Intent to start MainActivity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent); // Start the MainActivity
-                            finish(); // Optional: Finish LoginActivity to prevent going back to it
+                            // Navigate to SellcustomActivity
+                            navigateToSellcustomActivity();
                         } else {
                             // Sign-in failed
                             Toast.makeText(LoginActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -107,9 +105,8 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-
-    private void navigateToMainActivity() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+    private void navigateToSellcustomActivity() {
+        Intent intent = new Intent(LoginActivity.this, SellcustomActivity.class);
         startActivity(intent);
         finish(); // Optional: Finish LoginActivity to prevent going back to it
     }
