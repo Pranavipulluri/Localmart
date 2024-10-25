@@ -15,6 +15,9 @@ public class Product {
         this.shopLocation = shopLocation; // Initialize the new field
     }
 
+    public Product(String name, String description, String s, String imageUrl) {
+    }
+
     // Getters for all fields, including the new shopLocation
     public String getName() { return name; }
     public String getDescription() { return description; }
