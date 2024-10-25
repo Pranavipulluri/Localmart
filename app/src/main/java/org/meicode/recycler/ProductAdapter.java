@@ -1,5 +1,4 @@
 package org.meicode.recycler;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,9 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -30,7 +26,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
         return new ProductViewHolder(view);
     }
 
@@ -41,15 +37,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Set data to the views
         holder.productName.setText(product.getName());
         holder.productDescription.setText(product.getDescription());
-        // Inside onBindViewHolder
-        Glide.with(context).load(product.getImageUrl()).into(holder.productImage);
-        holder.maps_Icon.setOnClickListener(v -> openMap(product.getShopLocation()));
+        holder.productPrice.setText(String.format("$%.2f", product.getPrice())); // Format price
 
-
-
-
-        // Load the product image using Picasso or any other image loading library
-        Picasso.get().load(product.getImageUrl()).into(holder.productImage);
+        // Load the product image using setImageResource for drawable
+        holder.productImage.setImageResource(product.getImageResourceId());
     }
 
     @Override
@@ -58,20 +49,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-
-        public View maps_Icon;
-        TextView productName, productDescription;
+        TextView productName, productDescription, productPrice; // Added productPrice
         ImageView productImage;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-
             productName = itemView.findViewById(R.id.item_name);
             productDescription = itemView.findViewById(R.id.item_description);
+            productPrice = itemView.findViewById(R.id.item_price); // Initialize productPrice
             productImage = itemView.findViewById(R.id.item_image);
-            maps_Icon=itemView.findViewById(R.id.maps_icon);
         }
     }
+
+    // Optional: method to open maps if you need it
     private void openMap(String location) {
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(location));
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -80,5 +70,4 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             context.startActivity(mapIntent);
         }
     }
-
 }

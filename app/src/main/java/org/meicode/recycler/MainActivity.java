@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         boutiqueShops = DataProvider.getBoutiqueShops(); // Ensure DataProvider is defined and returning data
         productList = new ArrayList<>();
 
-        // Add products from each boutique shop into one list
         for (BoutiqueShop shop : boutiqueShops) {
             productList.addAll(shop.getProducts());
         }

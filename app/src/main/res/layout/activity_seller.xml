@@ -84,7 +84,7 @@
         android:id="@+id/recyclerViewProductRequests"
         android:layout_width="match_parent"
         android:layout_height="222dp"
-        tools:listitem="@layout/item_product" />
+        tools:listitem="@layout/item_product"/>
 
     <!-- Add Product Button -->
     <Button
