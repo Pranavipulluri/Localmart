@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FFEFCB"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:padding="8dp">
 
     <!-- Image of the Product on the Left -->
     <ImageView
@@ -19,6 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:orientation="vertical"
         android:paddingStart="8dp"
         android:paddingLeft="8dp">
@@ -28,28 +29,28 @@
             android:id="@+id/productDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Product description goes here"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp" />
+            android:textSize="14sp" />
 
         <!-- User Details -->
         <TextView
             android:id="@+id/userDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User details here"
-            android:textSize="12sp"
             android:layout_marginTop="4dp"
-            android:textColor="@android:color/darker_gray" />
+            android:text="User details here"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp" />
 
         <!-- Button to Message Customer -->
         <Button
             android:id="@+id/messageCustomerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Message Customer"
             android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="#009688" />
+            android:backgroundTint="#009688"
+            android:text="Message Customer"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

@@ -28,11 +28,12 @@
         </activity>
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".ChatsActivity" />
         <activity android:name=".SellersActivity" />
         <activity android:name=".SellcustomActivity" />
         <activity android:name=".SellerPageActivity" />
         <activity android:name=".AddProductActivity" />
+        <activity android:name=".ChatActivity" />
 
 
         <!-- Ensure MainActivity is declared -->

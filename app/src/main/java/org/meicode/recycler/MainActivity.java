@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (id == R.id.nav_chat) {
                 // Navigate to ChatActivity
-                Intent chatIntent = new Intent(MainActivity.this, ChatActivity.class);
+                Intent chatIntent = new Intent(MainActivity.this, ChatsActivity.class);
                 startActivity(chatIntent);
                 return true;
             } else if (id == R.id.nav_search) {

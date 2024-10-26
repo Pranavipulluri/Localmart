@@ -3,7 +3,9 @@ package org.meicode.recycler; // Replace with your package name
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,6 +42,8 @@ public class SellersActivity extends AppCompatActivity {
         productRequestAdapter = new ProductRequestAdapter(productRequests);
         recyclerView.setAdapter(productRequestAdapter);
         View profileButton = findViewById(R.id.profileButton);
+        ImageButton messageButton = findViewById(R.id.messageButton);
+
 
         // Set click listener on profileButton
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +52,15 @@ public class SellersActivity extends AppCompatActivity {
                 // Start SellerPageActivity
                 Intent intent = new Intent(SellersActivity.this, SellerPageActivity.class);
                 startActivity(intent);
+            }
+        });
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("SellersActivity", "Message button clicked!");
+                Intent intent = new Intent(SellersActivity.this, org.meicode.recycler.ChatActivity.class);
+                startActivity(intent);
+
             }
         });
     }

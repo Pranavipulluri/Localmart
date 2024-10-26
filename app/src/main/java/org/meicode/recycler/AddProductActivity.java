@@ -75,9 +75,18 @@ public class AddProductActivity extends AppCompatActivity {
         }
 
         double price = Double.parseDouble(priceString);
-        // Here you would add code to upload the product to your database or API
 
+        // Create an Intent to hold the product data
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("productName", name);
+        resultIntent.putExtra("productDescription", description);
+        resultIntent.putExtra("productPrice", price);
+        resultIntent.putExtra("productImageUri", productImageUri.toString()); // Pass the image URI as a string
+
+        // Set the result and finish the activity
+        setResult(RESULT_OK, resultIntent);
         Toast.makeText(this, "Product uploaded successfully!", Toast.LENGTH_SHORT).show();
-        finish(); // Optionally close the activity after uploading
+        finish();
     }
+
 }

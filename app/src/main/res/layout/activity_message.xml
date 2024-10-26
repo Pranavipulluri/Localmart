@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#FFEFCB"
         android:padding="8dp"
         android:scrollbars="vertical" />
 
@@ -32,11 +33,13 @@
             android:minHeight="48dp"
         android:padding="12dp"
         android:background="@drawable/message_background"/>
+
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:background="#009688"
+            android:text="Send" />
     </LinearLayout>
 </LinearLayout>

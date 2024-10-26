@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,40 +14,59 @@
 
 
     <!-- Description Box -->
+
+    <!-- Search Button -->
+
     <ImageView
         android:id="@+id/camera_icon"
-        android:layout_width="100dp"
-        android:layout_height="109dp"
+        android:layout_width="121dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="128dp"
         android:clickable="true"
         android:contentDescription="Camera Icon"
         android:padding="2dp"
-        android:src="@drawable/ic_camera" />
+        android:src="@drawable/ic_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/description_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="352dp"
+        android:background="@drawable/rounded_search_box"
+        android:gravity="top|start"
         android:hint="Enter description about your project"
         android:inputType="textMultiLine"
         android:lines="4"
-        android:gravity="top|start"
         android:padding="16dp"
-        android:background="@drawable/rounded_search_box" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Search Button -->
     <Button
         android:id="@+id/search_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="323dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#009688"
         android:text="Search Object"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#009688"/>
+        app:layout_constraintEnd_toEndOf="@+id/description_edit_text"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/description_edit_text"
+        tools:layout_editor_absoluteY="512dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navigation_menu" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,57 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEFCB"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:padding="16dp">
 
     <!-- Camera Icon for Photo Upload -->
+
+    <!-- Input Fields for Product Details -->
+
+    <!-- Upload Button -->
+
     <ImageView
         android:id="@+id/cameraIcon"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="148dp"
+        android:background="#8BC34A"
+        android:contentDescription="Camera Icon"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_camera"
-    android:contentDescription="Camera Icon"
-    android:layout_gravity="center"
-    android:scaleType="centerCrop"
-    android:padding="8dp"
-    android:background="#8BC34A" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Input Fields for Product Details -->
     <EditText
         android:id="@+id/productName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="344dp"
+        android:background="@drawable/rounded_box"
         android:hint="Product Name"
         android:padding="8dp"
-        android:background="@drawable/rounded_box" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cameraIcon"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/cameraIcon" />
 
     <EditText
         android:id="@+id/productDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="260dp"
         android:background="@drawable/rounded_box"
         android:hint="Product Description"
-        android:padding="8dp" />
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/productName"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="@+id/productName" />
 
-    <!-- Upload Button -->
     <EditText
         android:id="@+id/productPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="168dp"
         android:background="@drawable/rounded_box"
         android:hint="Price"
         android:inputType="numberDecimal"
-        android:padding="8dp" />
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/productDescription"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/productDescription" />
 
     <Button
         android:id="@+id/uploadProductButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="316dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="52dp"
         android:backgroundTint="#4CAF50"
         android:text="Upload Product"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/productPrice"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/productPrice" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
