@@ -92,4 +92,6 @@ public class AddProductActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a valid price", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

@@ -1,6 +1,7 @@
 package org.meicode.recycler;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button; // Import Button class
@@ -29,30 +30,52 @@ public class SellerPageActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerViewProductRequests.setLayoutManager(gridLayoutManager);
 
-        // Initialize product list and populate with sample data
-        productForSellersList = new ArrayList<>();
-        productForSellersList.add(new ProductForSellers("Product 1", "Description of Product 1", 9.99, R.drawable.sample_image));
-        productForSellersList.add(new ProductForSellers("Product 2", "Description of Product 2", 19.99, R.drawable.sample_image));
-        productForSellersList.add(new ProductForSellers("Product 3", "Description of Product 3", 29.99, R.drawable.sample_image));
-        // Add more products as needed
+        // Initialize the product list
+        productForSellersList = new ArrayList<>(); // Initialize the list to avoid null issues
 
-        // Set up the adapter only if the product list is not empty
-        if (!productForSellersList.isEmpty()) {
-            productAdapter = new ProductAdapterForCustomers(this, productForSellersList); // Ensure consistent naming
-            recyclerViewProductRequests.setAdapter(productAdapter);
-        }
+        // Populate with sample data if needed
+        productForSellersList.add(new ProductForSellers("Product 1", "Description of Product 1", 9.99, Uri.parse("android.resource://org.meicode.recycler/drawable/sample_image")));
+        productForSellersList.add(new ProductForSellers("Product 2", "Description of Product 2", 19.99, Uri.parse("android.resource://org.meicode.recycler/drawable/sample_image")));
+        productForSellersList.add(new ProductForSellers("Product 3", "Description of Product 3", 29.99, Uri.parse("android.resource://org.meicode.recycler/drawable/sample_image")));
+
+        // Set up the adapter with the initialized list
+        productAdapter = new ProductAdapterForCustomers(this, productForSellersList);
+        recyclerViewProductRequests.setAdapter(productAdapter);
 
         // Initialize the Add Product button
-        addProductButton = findViewById(R.id.addProductButton); // Ensure this ID matches your layout
+        addProductButton = findViewById(R.id.addProductButton);
 
         // Set onClickListener for the Add Product button
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerPageActivity.this, AddProductActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 100);
             }
         });
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            // Get the product data from the result
+            String name = data.getStringExtra("productName");
+            String description = data.getStringExtra("productDescription");
+            double price = data.getDoubleExtra("productPrice", 0.0);
+            String imageUriString = data.getStringExtra("productImageUri");
+
+            Uri imageUri = Uri.parse(imageUriString);
+
+            // Create a new ProductForSellers object
+            ProductForSellers newProduct = new ProductForSellers(name, description, price, imageUri);
+
+            // Add the new product to the list and notify the adapter
+            productForSellersList.add(newProduct);
+            productAdapter.notifyItemInserted(productForSellersList.size() - 1);
+        }
+    }
+
 }
 ;

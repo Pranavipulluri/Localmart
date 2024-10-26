@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide; // Include Glide dependency if using URLs
+import com.bumptech.glide.Glide; // Ensure Glide dependency is added
 
 import java.util.List;
 
@@ -31,14 +31,15 @@ public class ProductAdapterForCustomers extends RecyclerView.Adapter<ProductAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        ProductForSellers productForSellers = productForSellersList.get(position);
-        holder.productName.setText(productForSellers.getName());
-        holder.productDescription.setText(productForSellers.getDescription());
-        holder.productPrice.setText(String.format("$%.2f", productForSellers.getPrice())); // Format price
+        ProductForSellers product = productForSellersList.get(position);
+        holder.productName.setText(product.getName());
+        holder.productDescription.setText(product.getDescription());
+        holder.productPrice.setText(String.format("$%.2f", product.getPrice()));
 
-        // Load image - use Glide if you have URLs, else use drawable resources
-        holder.productImage.setImageResource(productForSellers.getImageResourceId());
-        // Glide.with(context).load(productForSellers.getImageUrl()).into(holder.productImage); // Uncomment if using URLs
+        // Load the image using Glide
+        Glide.with(context)
+                .load(product.getImageUri()) // Assuming getImageUri() returns a URI or URL
+                .into(holder.productImage);
     }
 
     @Override
