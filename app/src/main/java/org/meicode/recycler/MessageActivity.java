@@ -36,7 +36,8 @@ public class MessageActivity extends AppCompatActivity {
         sendButton.setOnClickListener(v -> {
             String messageText = messageInput.getText().toString();
             if (!messageText.isEmpty()) {
-                messageList.add(new Message(messageText, "Me"));
+                // Pass true for isSentByUser to indicate the message is from the user
+                messageList.add(new Message(messageText, true));
                 messageAdapter.notifyItemInserted(messageList.size() - 1);
                 messageInput.setText("");
             }

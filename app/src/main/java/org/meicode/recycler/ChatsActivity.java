@@ -39,10 +39,12 @@ public class ChatsActivity extends AppCompatActivity {
         // Handle item click
         userAdapter.setOnItemClickListener(position -> {
             User clickedUser = userList.get(position);
-            // Navigate to MessageActivity, passing user ID or details
-            Intent intent = new Intent(ChatsActivity.this, MessageActivity.class);
-            intent.putExtra("userId", clickedUser.getId()); // Pass the user ID to the message activity
-            startActivity(intent);
+            if (clickedUser != null) {  // Check for null to avoid crashes
+                // Navigate to MessageActivity, passing user ID or details
+                Intent intent = new Intent(ChatsActivity.this, MessageActivity.class);
+                intent.putExtra("userId", clickedUser.getId()); // Pass the user ID to the message activity
+                startActivity(intent);
+            }
         });
     }
 }

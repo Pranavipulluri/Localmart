@@ -1,6 +1,5 @@
 package org.meicode.recycler;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,7 +18,6 @@ public class ChatActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Chat> chatList;  // List of chats with customers
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +71,6 @@ public class ChatActivity extends AppCompatActivity {
                 filteredList.add(chat);
             }
         }
-        chatAdapter.updateChatList(filteredList);
+        chatAdapter.updateChatList(filteredList); // Ensure this method exists in your adapter
     }
 }

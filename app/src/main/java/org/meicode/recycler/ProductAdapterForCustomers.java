@@ -6,20 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide; // Include Glide dependency if using URLs
+
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
+public class ProductAdapterForCustomers extends RecyclerView.Adapter<ProductAdapterForCustomers.ProductViewHolder> {
     private Context context;
-    private List<Products> productList;
+    private List<ProductForSellers> productForSellersList;
 
-    public ProductAdapter(Context context, List<Products> productList) {
+    public ProductAdapterForCustomers(Context context, List<ProductForSellers> productForSellersList) {
         this.context = context;
-        this.productList = productList;
+        this.productForSellersList = productForSellersList;
     }
 
     @NonNull
@@ -31,20 +31,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Products product = productList.get(position);
+        ProductForSellers productForSellers = productForSellersList.get(position);
+        holder.productName.setText(productForSellers.getName());
+        holder.productDescription.setText(productForSellers.getDescription());
+        holder.productPrice.setText(String.format("$%.2f", productForSellers.getPrice())); // Format price
 
-        // Set data to the views
-        holder.productName.setText(product.getProductName());
-        holder.productDescription.setText(product.getDescription());
-        holder.productPrice.setText(String.format("$%.2f", product.getPrice())); // Format price
-
-        // Assuming imageUrl is a URL string, you'll need an image loading library like Glide or Picasso to load it.
-        // Glide.with(context).load(product.getImageUrl()).into(holder.productImage);
+        // Load image - use Glide if you have URLs, else use drawable resources
+        holder.productImage.setImageResource(productForSellers.getImageResourceId());
+        // Glide.with(context).load(productForSellers.getImageUrl()).into(holder.productImage); // Uncomment if using URLs
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return productForSellersList.size();
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {

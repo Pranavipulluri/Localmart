@@ -21,7 +21,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     public ItemAdapter(Context context, List<Item> itemList) {
         this.context = context;
-        this.itemList = itemList;
+        this.itemList = itemList != null ? itemList : List.of(); // Avoid null list
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -66,6 +66,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 context.startActivity(mapIntent);
+            }
+        });
+
+        // Optional: Set a click listener for the entire item view
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle item click, e.g., open a detailed view
+                // Intent detailIntent = new Intent(context, DetailActivity.class);
+                // detailIntent.putExtra("itemId", currentItem.getId()); // Example if you have an ID
+                // context.startActivity(detailIntent);
             }
         });
     }

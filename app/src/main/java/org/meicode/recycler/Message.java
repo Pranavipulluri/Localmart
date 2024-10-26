@@ -4,9 +4,10 @@ public class Message {
     private String text;
     private boolean isSentByUser;
 
-    public Message(String text, String isSentByUser) {
+    // Constructor with boolean parameter
+    public Message(String text, boolean isSentByUser) {
         this.text = text;
-        this.isSentByUser = Boolean.parseBoolean(isSentByUser);
+        this.isSentByUser = isSentByUser;
     }
 
     public String getText() {

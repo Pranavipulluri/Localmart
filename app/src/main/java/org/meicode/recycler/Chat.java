@@ -1,13 +1,14 @@
 package org.meicode.recycler;
+
 public class Chat {
     private String customerName;
     private String lastMessage;
-    private String CustomerId;
+    private String customerId; // Changed to camelCase
 
-    public Chat(String customerName, String lastMessage,String CustomerID) {
+    public Chat(String customerName, String lastMessage, String customerId) { // Changed parameter name to match variable
         this.customerName = customerName;
         this.lastMessage = lastMessage;
-        this.CustomerId=CustomerId;
+        this.customerId = customerId; // Fixed this assignment
     }
 
     public String getCustomerName() {
@@ -17,7 +18,8 @@ public class Chat {
     public String getLastMessage() {
         return lastMessage;
     }
-    public String getCustomerId(){
-        return CustomerId;
+
+    public String getCustomerId() {
+        return customerId; // Ensured method name is correct
     }
 }

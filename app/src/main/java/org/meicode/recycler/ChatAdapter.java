@@ -1,4 +1,3 @@
-// ChatAdapter.java
 package org.meicode.recycler;
 
 import android.content.Context;
@@ -50,7 +49,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     }
 
     public void updateChatList(List<Chat> newChatList) {
-        chatList = newChatList;
+        chatList.clear(); // Clear old data to avoid memory leaks
+        chatList.addAll(newChatList); // Add new data
         notifyDataSetChanged();
     }
 

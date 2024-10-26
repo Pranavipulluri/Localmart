@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ProductFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ProductAdapter productAdapter;
+    private ProductAdapterForSellers productAdapterForSellers;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
@@ -30,8 +30,8 @@ public class ProductFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Assuming you're using the first boutique's products for now
-        productAdapter = new ProductAdapter(requireActivity(), DataProvider.getBoutiqueShops().get(0).getProducts());
-        recyclerView.setAdapter(productAdapter);
+        productAdapterForSellers = new ProductAdapterForSellers(requireActivity(), DataProvider.getBoutiqueShops().get(0).getProducts());
+        recyclerView.setAdapter(productAdapterForSellers);
 
         return view;
     }

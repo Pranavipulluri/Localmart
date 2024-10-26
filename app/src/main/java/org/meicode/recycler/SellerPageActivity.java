@@ -15,8 +15,8 @@ import java.util.List;
 
 public class SellerPageActivity extends AppCompatActivity {
     private RecyclerView recyclerViewProductRequests;
-    private ProductAdapters productAdapter; // Ensure consistent naming
-    private List<Product> productList;
+    private ProductAdapterForCustomers productAdapter; // Ensure consistent naming
+    private List<ProductForSellers> productForSellersList;
     private Button addProductButton; // Declare Button variable
 
     @Override
@@ -30,15 +30,17 @@ public class SellerPageActivity extends AppCompatActivity {
         recyclerViewProductRequests.setLayoutManager(gridLayoutManager);
 
         // Initialize product list and populate with sample data
-        productList = new ArrayList<>();
-        productList.add(new Product("Product 1", "Description of Product 1", 9.99, R.drawable.sample_image));
-        productList.add(new Product("Product 2", "Description of Product 2", 19.99, R.drawable.sample_image));
-        productList.add(new Product("Product 3", "Description of Product 3", 29.99, R.drawable.sample_image));
+        productForSellersList = new ArrayList<>();
+        productForSellersList.add(new ProductForSellers("Product 1", "Description of Product 1", 9.99, R.drawable.sample_image));
+        productForSellersList.add(new ProductForSellers("Product 2", "Description of Product 2", 19.99, R.drawable.sample_image));
+        productForSellersList.add(new ProductForSellers("Product 3", "Description of Product 3", 29.99, R.drawable.sample_image));
         // Add more products as needed
 
-        // Set up the adapter
-        productAdapter = new ProductAdapters(this, productList); // Ensure consistent naming
-        recyclerViewProductRequests.setAdapter(productAdapter);
+        // Set up the adapter only if the product list is not empty
+        if (!productForSellersList.isEmpty()) {
+            productAdapter = new ProductAdapterForCustomers(this, productForSellersList); // Ensure consistent naming
+            recyclerViewProductRequests.setAdapter(productAdapter);
+        }
 
         // Initialize the Add Product button
         addProductButton = findViewById(R.id.addProductButton); // Ensure this ID matches your layout
@@ -53,3 +55,4 @@ public class SellerPageActivity extends AppCompatActivity {
         });
     }
 }
+;

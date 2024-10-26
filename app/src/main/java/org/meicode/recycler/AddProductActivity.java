@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddProductActivity extends AppCompatActivity {
+    private static final int IMAGE_REQUEST_CODE = 1; // Define a constant for request code
     private ImageView cameraIcon;
     private EditText productName, productDescription, productPrice;
     private Button uploadProductButton;
@@ -51,16 +52,15 @@ public class AddProductActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             productImageUri = data.getData();
-            // You can set the image in the ImageView if needed
-            cameraIcon.setImageURI(productImageUri);
+            cameraIcon.setImageURI(productImageUri); // Display selected image
         }
     }
 
@@ -69,24 +69,27 @@ public class AddProductActivity extends AppCompatActivity {
         String description = productDescription.getText().toString().trim();
         String priceString = productPrice.getText().toString().trim();
 
+        // Check for empty fields and image
         if (name.isEmpty() || description.isEmpty() || priceString.isEmpty() || productImageUri == null) {
             Toast.makeText(this, "Please fill in all fields and select an image", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        double price = Double.parseDouble(priceString);
+        try {
+            double price = Double.parseDouble(priceString); // Parse price
+            // Create an Intent to hold the product data
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("productName", name);
+            resultIntent.putExtra("productDescription", description);
+            resultIntent.putExtra("productPrice", price);
+            resultIntent.putExtra("productImageUri", productImageUri.toString()); // Pass the image URI as a string
 
-        // Create an Intent to hold the product data
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("productName", name);
-        resultIntent.putExtra("productDescription", description);
-        resultIntent.putExtra("productPrice", price);
-        resultIntent.putExtra("productImageUri", productImageUri.toString()); // Pass the image URI as a string
-
-        // Set the result and finish the activity
-        setResult(RESULT_OK, resultIntent);
-        Toast.makeText(this, "Product uploaded successfully!", Toast.LENGTH_SHORT).show();
-        finish();
+            // Set the result and finish the activity
+            setResult(RESULT_OK, resultIntent);
+            Toast.makeText(this, "Product uploaded successfully!", Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Please enter a valid price", Toast.LENGTH_SHORT).show();
+        }
     }
-
 }

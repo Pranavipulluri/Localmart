@@ -1,7 +1,5 @@
 package org.meicode.recycler;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,22 +39,16 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
         holder.messageCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("SellersActivity", "Message button clicked!");
+                Log.d("ProductRequestAdapter", "Message button clicked!");
 
-                Intent intent = null;
-                try {
-                    intent = new Intent(SellersActivity.class.newInstance(), ChatActivity.class);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                } catch (InstantiationException e) {
-                    throw new RuntimeException(e);
-                }
-                // Handle the message button click
-                // You can implement your messaging logic here
+                // Use the context from the view to create the Intent
+                Intent intent = new Intent(v.getContext(), ChatActivity.class);
+                // Optional: Pass any necessary data with intent
+                // intent.putExtra("extra_data", value);
+                v.getContext().startActivity(intent); // Start the ChatActivity
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

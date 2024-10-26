@@ -1,15 +1,14 @@
 package org.meicode.recycler;
 
-
 public class ProductRequest {
     private String description;
     private String userDetails;
-    private int imageResourceId;
+    private int imageResourceId; // Declare the imageResourceId field
 
     public ProductRequest(String description, String userDetails, int imageResourceId) {
         this.description = description;
         this.userDetails = userDetails;
-        this.imageResourceId = imageResourceId;
+        this.imageResourceId = imageResourceId; // Initialize the resource ID
     }
 
     public String getDescription() {
@@ -21,6 +20,6 @@ public class ProductRequest {
     }
 
     public int getImageResourceId() {
-        return imageResourceId;
+        return imageResourceId; // Return the drawable resource ID
     }
 }

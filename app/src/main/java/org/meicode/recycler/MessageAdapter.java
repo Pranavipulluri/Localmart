@@ -46,11 +46,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         public void bind(Message message) {
             messageTextView.setText(message.getText());
 
-            // Align the text view depending on who sent the message
+            // Set layout parameters or gravity based on who sent the message
             if (message.isSentByUser()) {
-                messageTextView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+                // Align message to the right
+                messageTextView.setGravity(View.TEXT_ALIGNMENT_VIEW_END);
+                // You can also set different background color or style if needed
             } else {
-                messageTextView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+                // Align message to the left
+                messageTextView.setGravity(View.TEXT_ALIGNMENT_VIEW_START);
+                // You can also set different background color or style if needed
             }
         }
     }

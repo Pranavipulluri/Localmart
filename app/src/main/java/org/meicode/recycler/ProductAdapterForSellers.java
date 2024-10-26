@@ -6,16 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide; // Make sure to include Glide dependency
+
 import java.util.List;
 
-public class ProductAdapters extends RecyclerView.Adapter<ProductAdapters.ProductViewHolder> {
-    private Context context;
-    private List<Product> productList;
+public class ProductAdapterForSellers extends RecyclerView.Adapter<ProductAdapterForSellers.ProductViewHolder> {
 
-    public ProductAdapters(Context context, List<Product> productList) {
+    private Context context;
+    private List<ProductForCustomers> productList;
+
+    public ProductAdapterForSellers(Context context, List<ProductForCustomers> productList) {
         this.context = context;
         this.productList = productList;
     }
@@ -23,17 +27,23 @@ public class ProductAdapters extends RecyclerView.Adapter<ProductAdapters.Produc
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false); // Ensure this layout file exists
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
-        holder.productName.setText(product.getName());
+        ProductForCustomers product = productList.get(position);
+
+        // Set data to the views
+        holder.productName.setText(product.getProductName());
         holder.productDescription.setText(product.getDescription());
-        holder.productPrice.setText(String.valueOf(product.getPrice()));
-        holder.productImage.setImageResource(product.getImageResourceId()); // Ensure this is correct
+        holder.productPrice.setText(String.format("$%.2f", product.getPrice())); // Format price
+
+        // Load image using Glide
+        Glide.with(context)
+                .load(product.getImageUrl())
+                .into(holder.productImage);
     }
 
     @Override
@@ -47,10 +57,10 @@ public class ProductAdapters extends RecyclerView.Adapter<ProductAdapters.Produc
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.item_name); // Ensure this ID exists in your item layout
-            productDescription = itemView.findViewById(R.id.item_description); // Ensure this ID exists in your item layout
-            productPrice = itemView.findViewById(R.id.item_price); // Ensure this ID exists in your item layout
-            productImage = itemView.findViewById(R.id.item_image); // Ensure this ID exists in your item layout
+            productName = itemView.findViewById(R.id.item_name);
+            productDescription = itemView.findViewById(R.id.item_description);
+            productPrice = itemView.findViewById(R.id.item_price);
+            productImage = itemView.findViewById(R.id.item_image);
         }
     }
 }

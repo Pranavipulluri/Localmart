@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private RecyclerView recyclerView;
-    private ProductAdapter productAdapter;
+    private ProductAdapterForSellers productAdapterForSellers;
     private List<BoutiqueShop> boutiqueShops;
-    private List<Products> productList;
+    private List<ProductForCustomers> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Setup the RecyclerView Adapter
-        productAdapter = new ProductAdapter(this, productList);
-        recyclerView.setAdapter(productAdapter);
+        productAdapterForSellers = new ProductAdapterForSellers(this, productList);
+        recyclerView.setAdapter(productAdapterForSellers);
 
         // Firebase Token Handling
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
