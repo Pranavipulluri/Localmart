@@ -34,6 +34,8 @@
         <activity android:name=".SellerPageActivity" />
         <activity android:name=".AddProductActivity" />
         <activity android:name=".ChatActivity" />
+        <activity android:name=".AddActivity" />
+
 
 
         <!-- Ensure MainActivity is declared -->

@@ -3,6 +3,7 @@ package org.meicode.recycler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);  // Default selected item
 
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerview);
@@ -60,26 +59,18 @@ public class MainActivity extends AppCompatActivity {
             // Send token to your server
             sendRegistrationToServer(token);
         });
+        View addButton = findViewById(R.id.icon2);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Redirect to AddActivity
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Bottom Navigation item selection handling
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                // Handle home action
-                return true;
-            } else if (id == R.id.nav_chat) {
-                // Navigate to ChatActivity
-                Intent chatIntent = new Intent(MainActivity.this, ChatsActivity.class);
-                startActivity(chatIntent);
-                return true;
-            } else if (id == R.id.nav_search) {
-                // Navigate to SearchActivity
-                Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(searchIntent);
-                return true;
-            }
-            return false;
-        });
+
     }
 
     // Method to send FCM token to your app's server

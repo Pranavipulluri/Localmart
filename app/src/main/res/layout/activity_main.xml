@@ -34,7 +34,7 @@
                     android:layout_width="48dp"
                     android:layout_height="36dp"
                     android:contentDescription="App Logo"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:src="@drawable/img_2" />
 
                 <View
                     android:layout_width="0dp"
@@ -69,7 +69,7 @@
                 android:layout_height="200dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/img_3" />
 
             <!-- Product Name -->
             <TextView
@@ -123,12 +123,41 @@
                 tools:listitem="@layout/item_layout" />
 
             <!-- Bottom Navigation Bar -->
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:menu="@menu/bottom_navigation_menu" />
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <!-- First Icon -->
+                <ImageView
+                    android:id="@+id/icon1"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_home"
+                    android:contentDescription="Icon 1"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- Second Icon -->
+                <ImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_add"
+                    android:contentDescription="Icon 2"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- Third Icon -->
+                <ImageView
+                    android:id="@+id/icon3"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_chat"
+                    android:contentDescription="Icon 3" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
